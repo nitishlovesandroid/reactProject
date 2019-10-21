@@ -8,8 +8,6 @@ import {
   Alert,FlatList
 } from 'react-native'
 export default Item=(props)=> {
-
-
    return (
      <View style={styles.item}>
          <View style={styles.design}>
@@ -17,7 +15,7 @@ export default Item=(props)=> {
    Email
   </Text>
        <Text style={styles.title} onPress={()=>{
-         props.d
+         props.mykey.bind(this,"heloo")
        }}>{props.title.name}</Text>
        </View>
   
@@ -37,6 +35,19 @@ export default Item=(props)=> {
      </View>
    );
   }
+  function Item(props) {
+  console.log("incoming_props",props)
+ return (
+   <View style={styles.item}>
+       <View style={styles.design}>
+     <Text style={styles.title} onPress={props.abc.bind(this,props.title.key)}>{props.title.name}</Text>
+     </View>
+     <View>
+     <Text style={styles.title}>{props.title.password}</Text>
+     </View>
+   </View>
+ );
+}
   const styles = StyleSheet.create({
     container: {
       flex: 1,

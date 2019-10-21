@@ -1,6 +1,5 @@
 
-import React, { Component } from 'react';
-import Item from "./componentfile/Item"
+import React, { Component } from 'react'
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,20 +8,17 @@ import {
   TextInput,Button,
   Alert,FlatList
 } from 'react-native'
-import { isModuleDeclaration } from '@babel/types';
 //import List from './componentfile/flatlist'
 //import MyList from './componentfile/flatlist'
-/*
-hello react world 
-*/
 
-export default class app extends Component {
+export default class EX extends Component {
   
   constructor(props) {  
     super(props)
-    this.state = { count: 1,empRecord:[],name:"",password:""
+    this.state = { count: 1,empRecord:[],name:"",password:"",key:""
     
     }
+  
   }
 
   // onPress = () => {
@@ -35,43 +31,45 @@ export default class app extends Component {
       count:text
     })
   }
-
   bindvalue(){
 
     this.counter=0;
     var i=0
     var users={
       name:this.state.name,
-      password:this.state.password
+      password:this.state.password,
+      key:Math.random().toString(36).substring(7)
     };
     //Alert.alert(users.name)
     var copyarr=this.state.empRecord;
     copyarr[copyarr.length]=users;
+    // var temp=this.state.empRecord.push(users)
     this.setState({empRecord:copyarr});
-    
+
+
+
+
   }
-  deleteItem(prop)
+  handleDelete(item)
   {
-    Alert.alert("Hello "+prop);
-    /*let copyArr=[...this.state.empRecord];
-      let index=copyArr.indexOf(prop);
-      if(index!=-1){
-        copyArr.splice(index,1);
-        this.setState({empRecord:copyArr});
-      }*/
+  Alert.alert(props)
   }
-
   
-
-  deleteMyItem=(prop)=>{
-    Alert.alert("Hello world this is abhi "+prop);
-  }
   setinput(value){
     
     this.setState({
       name:value
     })
   }
+  fun =(hello)=>
+  {
+    Alert.alert(hello)
+  }
+  setdialog(value){
+    
+    Alert.alert(value+"")
+  }
+
 setPassword(value){
   this.setState({
     password:value
@@ -105,24 +103,40 @@ setPassword(value){
     <TextInput placeholder="Enter Your Password" style={styles.edittext} onChangeText={this.setPassword.bind(this)}/>
   </View>
 </View>
-<TouchableOpacity style={styles.mybtn} onPress={this.bindvalue.bind(this)}>
+{ <TouchableOpacity style={styles.mybtn} onPress={this.bindvalue.bind(this)}>
   <Text style={{justifyContent:'center',alignItems:'center'}}>
     Click Me
   </Text>
+</TouchableOpacity> }
+<View style={styles.listViewStyle}> 
+ {
+ <FlatList
 
-
-</TouchableOpacity>
-<View style={styles.listViewStyle}>
-<FlatList
-     data={this.state.empRecord}
-     renderItem={ ( { item,index,separators } ) => <Item title={item} del={this.deleteMyItem}/> }
-   />
+        data={this.state.empRecord}
+        renderItem={ ( { item,index,separators } ) => <Item title={item} abc={this.fun} xyz={"fdsfj"} /> }
+        keyExtractor={item => item.name}
+      />
+       }
 </View>
+
+
  </View>
     )
   }
 }
-
+function Item(props) {
+  console.log("incoming_props",props)
+ return (
+   <View style={styles.item}>
+       <View style={styles.design}>
+     <Text style={styles.title} onPress={props.abc.bind(this,props.title.key)}>{props.title.name}</Text>
+     </View>
+     <View>
+     <Text style={styles.title}>{props.title.password}</Text>
+     </View>
+   </View>
+ );
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -151,6 +165,18 @@ height:300,width:'100%',borderRadius:3,marginTop:20,justifyContent:'center'
   countContainer: {
     alignItems: 'center',
     padding: 10
+  }, item: {
+    backgroundColor: '#ddd',
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  design:{
+elevation:5,width:'100%',padding:5
+  },
+  title: {
+
+    fontSize: 32,
   },
   edittext:{
     margin:3,
@@ -158,30 +184,5 @@ borderWidth:2,backgroundColor:'#ddd',marginBottom:10
   },
   countText: {
     color: '#FF00FF'
-  },container: {
-    flex: 1,
-  
-  },
-  item: {
-    backgroundColor: '#ddd',
-    padding: 10,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  design:{
-      flexDirection:'row',
-      justifyContent:'space-evenly',
-elevation:5,width:'100%',padding:5,
-  },
-  placeholder:{
-      width:'50%'
-  },
-  forbuton:{
-flexDirection:'row'
-  },
-  title: {
-      flex:1,
-
-    fontSize: 32,
   }
 })
