@@ -13,7 +13,7 @@ import { isModuleDeclaration } from '@babel/types';
 //import List from './componentfile/flatlist'
 //import MyList from './componentfile/flatlist'
 /*
-hello react
+hello react world
 */
 
 export default class app extends Component {
