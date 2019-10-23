@@ -119,7 +119,7 @@ export default class MyScreen extends Component {
         // Alert.alert(index.toString())
         alert(index)
     }}>
-      <Image style={styles.imageThumbnail}/>
+      <Image style={styles.imageThumbnail} source={require('./wallpaper.png')}></Image>
     </TouchableOpacity>
   )}
   //Setting the number of column
@@ -159,7 +159,9 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         backgroundColor: 'red',
         justifyContent: 'center',
+        resizeMode: 'stretch',
         alignItems: 'center',
+        width:120,
         height: 100, borderRadius: 5
 
     },

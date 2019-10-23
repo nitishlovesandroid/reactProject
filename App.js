@@ -52,7 +52,7 @@ export default class EX extends Component {
   }
   handleDelete(item)
   {
-  Alert.alert(props)
+  Alert.alert(item)
   }
   
   setinput(value){
@@ -63,7 +63,7 @@ export default class EX extends Component {
   }
   fun =(hello)=>
   {
-    Alert.alert(hello)
+    alert(hello)
   }
   setdialog(value){
     
@@ -113,7 +113,7 @@ setPassword(value){
  <FlatList
 
         data={this.state.empRecord}
-        renderItem={ ( { item,index,separators } ) => <Item title={item} abc={this.fun} xyz={"fdsfj"} /> }
+        renderItem={ ( { item,index,separators } ) => <Item title={item} abc={this.fun} xyz={index} /> }
         keyExtractor={item => item.name}
       />
        }
@@ -129,7 +129,7 @@ function Item(props) {
  return (
    <View style={styles.item}>
        <View style={styles.design}>
-     <Text style={styles.title} onPress={props.abc.bind(this,props.title.key)}>{props.title.name}</Text>
+     <Text style={styles.title} onPress={props.abc.bind(this,props.xyz)}>{props.title.name}</Text>
      </View>
      <View>
      <Text style={styles.title}>{props.title.password}</Text>

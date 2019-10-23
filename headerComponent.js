@@ -40,6 +40,7 @@ const style = StyleSheet.create(
         header: {
 
             width: '100%',
+        
             height: 50, backgroundColor: 'orange', justifyContent: 'flex-end', alignContent: 'center'
 
         }, imageProperty: {
