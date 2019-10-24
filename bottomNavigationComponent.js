@@ -19,26 +19,24 @@ export default BottomNavigationComponent = () => {
             <Icon1 style={style.iconproperty} name="search1" size={25}></Icon1>
             <Icon style={style.iconproperty} name="user" size={25}></Icon>
             <Icon2 style={style.iconproperty} name="bell" size={25}> </Icon2>
-            <Icon3 style={style.iconproperty} name="md-settings" size={25}></Icon3>            
-        
+            <Icon3 style={style.iconproperty} name="md-settings" size={25}></Icon3>
         </View>
-    )
-
-
-
+    );
 }
-const style=StyleSheet.create({
 
+const style = StyleSheet.create({
+    headerbody: {
+        alignSelf:"flex-end",
+        width: '100%',
+        height: 50,
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        backgroundColor: 'white'
 
-headerbody:{
-    position: 'absolute',
-    bottom: 0,
-    width:'100%',height:50,justifyContent:'space-evenly',flexDirection:'row',backgroundColor:'white'
-
-},iconproperty:{
-    width:50,
-    height:50,
-    justifyContent:'center',alignItems:'center',padding:13,
-}
+    }, iconproperty: {
+        width: 50,
+        height: 50,
+        justifyContent: 'center', alignItems: 'center', padding: 13,
+    }
 
 })
