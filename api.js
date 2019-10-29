@@ -8,8 +8,8 @@ export default class api extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      empdata: []
-
+      empdata: [],
+      
     }
   }
   getRequest()
@@ -38,19 +38,7 @@ export default class api extends Component {
     
     });
   }
-  postRequest()
-  {
-    axios.post('https://jsonplaceholder.typicode.com/users', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    })
-    .then(function (response) {
-      console.warn("post_request_response",JSON.stringify(response))
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+
 
   componentDidMount() {
  this.getRequest();
@@ -75,7 +63,7 @@ export default class api extends Component {
       <SafeAreaView style={{flex: 1, paddingTop:20}}>
         <FlatList
           data={this.state.empdata}
-          renderItem={({item}) => <Text style={{padding:5,elevation:5,}}>{item.id}, {item.name}</Text>}
+          renderItem={({item,index}) => <Text style={{padding:5,elevation:5,}}>{item.id}, {item.name}</Text>}
           keyExtractor={({id}, index) => id}
         />
       </SafeAreaView>
